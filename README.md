@@ -1,4 +1,4 @@
-# plugin-template.nvim
+# turbo.nvim
 
 ## Installation
 with lazy.vim:
@@ -21,12 +21,14 @@ with lazy.vim:
 ## Using
 
 my keymaps
-```vim.keymap.set("n", "<leader>td", ":TurboDownload<Enter>", { desc = "download
+```
+vim.keymap.set("n", "<leader>td", ":TurboDownload<Enter>", { desc = "download
 project" })
 vim.keymap.set("n", "<leader>tw", ":TurboWatch<Enter>", { desc = "watch local
 project for changes" })
 vim.keymap.set("n", "<leader>tu", ":TurboUnwatch<Enter>", { desc = "stop
-watching for changes" })```
+watching for changes" })
+```
 
 ## Thanks
 [Plugin template][plugin-template]
