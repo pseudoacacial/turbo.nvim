@@ -1,0 +1,68 @@
+*turbo.txt*  A plugin to communicate over api with AdTurbo
+
+==============================================================================
+CONTENTS                                          *turbo-contents*
+
+    1. Introduction ......................... |turbo-introduction|
+    2. Setup ................................ |turbo-setup|
+    3. Commands ............................. |turbo-commands|
+    4. API .................................. |turbo-api|
+
+==============================================================================
+1. INTRODUCTION                               *turbo-introduction*
+
+turbo.nvim downloads files over api, tracks them for changes, and uploads
+whenever changes are made.
+
+
+==============================================================================
+3. COMMANDS                                            *turbo-commands*
+
+:TurboDownload                                         *TurboDownload*
+
+Downloads a whole project.
+
+:TurboWatch                                            *TurboWatch*
+
+Starts watching directory.
+
+:TurboUnwatch                                          *TurboUnwatch*
+
+Unwatches directory.
+
+:TurboOptions                                          *TurboOptions*
+
+Shows current config
+==============================================================================
+4. API                                                 *turbo-api*
+
+
+turbo.setup({config})                                  *turbo.setup()*
+        Configures this plugin. Currently supported configuration variables
+        are:
+        • `token`: a string with personal access token
+	• `project`
+	• `package`
+	• `local_path`
+	• `depth`: how many layers of directories are being watched for
+	changes (default 3)
+
+        Parameters: ~
+            {config}(required, table) Table of values; keys are as listed
+                above. Accept defaults by omitting the relevant key.
+
+turbo.is_configured()          *turbo.is_configured()*
+        Tell if the plugin is configured.
+        Return: ~
+            true/false
+
+turbo.show_options()
+
+turbo.download_project()
+
+turbo.watch_project()
+
+turbo.unwatch_project()
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:noet:fen:noet:
