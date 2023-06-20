@@ -15,8 +15,8 @@ local function populate()
 		.. options.local_path
 		.. [[__FILEPATH__']]
 	local JSON_PATH = options.local_path .. "/.file_list"
-	-- fs.create_dir(options.local_path)
 
+	fs.create_dir(options.local_path)
 	vim.cmd("tcd " .. options.local_path)
 	-- require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
 

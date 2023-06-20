@@ -1,23 +1,26 @@
 # turbo.nvim
-
+plugin for neovim.
+it uses curl to let you work on local files, and keeps them synchronised to a
+server over api
 ## Installation
-with lazy.vim:
+with lazy.nvim:
 ```
 {
     dir = "path/to/turbo.nvim",
     requires = { "nvim-lua/plenary.nvim", "rktjmp/fwatch.nvim" },
     config = function()
       require("turbo").setup({
-        token =
-"[TURBO AUTH TOKEN HERE]",
-        project = "NK_Project%20(1)",
+        token = "[BEARER AUTH TOKEN HERE]",
+        project = "NK_Project (1)",
         package = "package",
-        local_path =
-"path/to/workspace/NK_Project/package",
+        local_path = "path/to/workspace/",
       })
     end,
   },
 ```
+plugin will download (and overwrite) files into: [local_path][project]/[package],
+with " (1)" removed from the project name
+
 ## Using
 
 my keymaps

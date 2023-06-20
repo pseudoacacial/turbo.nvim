@@ -17,6 +17,10 @@ end
 -- plugin
 function turbo.setup(options)
 	turbo.options = with_defaults(options)
+	local projectName = turbo.options.project:gsub(" %(%d*%)", "")
+	turbo.options.local_path = turbo.options.local_path .. projectName .. "/" .. turbo.options.package
+	-- escape space char for URL
+	turbo.options.project = turbo.options.project:gsub(" ", "%%20")
 end
 
 function turbo.is_configured()
