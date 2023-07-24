@@ -1,7 +1,7 @@
 local fs = require("turbo.fs")
 local json = require("turbo.dkjson")
 local file_list = require("turbo.file_list")
-
+local a = require("plenary.async")
 local options = {}
 
 local function populate()
@@ -18,6 +18,7 @@ local function populate()
 
 	fs.create_dir(options.local_path)
 	vim.cmd("tcd " .. options.local_path)
+
 	-- require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
 
 	file_list.get_file_list(options)
@@ -30,13 +31,20 @@ local function populate()
 	end
 	for index, value in ipairs(files_and_dirs_table.files) do
 		local command = CURL_CMD:gsub("__FILEPATH__", "/" .. value)
-		os.execute(command)
+		a.run(function()
+			os.execute(command)
+		end, function()
+			print("downloaded " .. value)
+		end)
 	end
 end
 
 local function init(options_arg)
 	options = options_arg
-	populate()
+	print("Downloading project " .. options.project .. " to " .. options.local_path)
+	a.run(populate, function()
+		print("Finished downloading project " .. options.project .. " to " .. options.local_path)
+	end)
 end
 
 return {
