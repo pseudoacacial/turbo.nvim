@@ -69,7 +69,8 @@ end
 
 local function watch_all(options_arg)
 	options = options_arg
-	vim.cmd("cd " .. options.local_path)
+	print(options.local_path)
+	vim.cmd("cd " .. options.local_path:gsub("#", "\\#"))
 	-- watch main dir
 	watch("/", true)
 	-- watch subdirectories

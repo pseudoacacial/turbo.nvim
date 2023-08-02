@@ -21,6 +21,8 @@ function turbo.setup(options)
 	turbo.options.local_path = turbo.options.local_path .. projectName .. "/" .. turbo.options.package
 	-- escape space char for URL
 	turbo.options.project = turbo.options.project:gsub(" ", "%%20")
+	-- escape hash char in pack package name
+	turbo.options.package = turbo.options.package:gsub("#", "%%23")
 end
 
 function turbo.is_configured()
